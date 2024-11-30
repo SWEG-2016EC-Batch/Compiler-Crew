@@ -26,3 +26,7 @@ Outputs:
 8. Output the final result
 9. Output a thank you message
 10. End
+
+flowchart
+
+![flowchart_pow_function_shapes](https://github.com/user-attachments/assets/9276e2c2-52e8-4c5b-829a-8e35e2d13691)
