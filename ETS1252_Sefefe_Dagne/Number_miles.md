@@ -26,3 +26,7 @@ Outputs:
 8. Output the total distance the automobile can travel without refueling
 9. End
 
+flowchart
+
+
+![automobile_flowchart](https://github.com/user-attachments/assets/8d51029a-7d9a-42a6-8889-1e1c1fc94157)
