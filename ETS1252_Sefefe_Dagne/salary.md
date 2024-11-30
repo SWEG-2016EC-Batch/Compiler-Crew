@@ -38,3 +38,7 @@ Outputs:
 19. Output the gross salary
 20. Output the net salary
 21. End
+
+     ###  flowchart
+
+      ![salary_calculation_flowchart](https://github.com/user-attachments/assets/a1eeea33-e85f-4257-8f97-aedca925e2f3)
