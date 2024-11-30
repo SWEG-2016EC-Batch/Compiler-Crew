@@ -40,3 +40,7 @@ Outputs:
    14. Read decision
 15. While decision is 'y' or 'Y'
 16. End
+
+    ### flowchart
+
+      ![BMI_Flowchart_Shapes](https://github.com/user-attachments/assets/6c50f0c9-45a3-4238-abde-b109e563f39d)
