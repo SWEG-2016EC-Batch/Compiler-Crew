@@ -1,3 +1,6 @@
+/* Write a program that prompts the capacity in gallon of an automobile fuel tank and the miles per gallons the automobile can 
+be driven . The program outputs the number miles the automobile can be driven without refueling.*/
+
 #include <iostream>
 using namespace std;
 
