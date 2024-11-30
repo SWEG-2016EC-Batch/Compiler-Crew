@@ -1,3 +1,5 @@
+/* write a program that finds the result of the expression x raised to y where the value of x and y are entered by the user .*/
+
 #include <iostream>
 #include <cmath> 
 
