@@ -24,7 +24,8 @@
     "It will take <days> days, <hours> hours, <minutes> minutes, and <seconds> seconds to transmit the file."
 9. End
 
-10. flowchart
+10.    ### flowchart
 
-11.      ![File_Transmission_Flowchart](https://github.com/user-attachments/assets/8c8ef7f6-64d0-445d-9435-d88aa0c0d906)
+11.     
+  ![File_Transmission_Flowchart](https://github.com/user-attachments/assets/8a04b2e8-0e31-464d-b479-869844074b28)
 
