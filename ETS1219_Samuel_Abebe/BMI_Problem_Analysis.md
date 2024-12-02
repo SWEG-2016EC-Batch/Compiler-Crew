@@ -70,6 +70,6 @@
 6. **Print Separator:**
    - Print a separator line for better readability.
 
-##Flowchart
+###Flowchart
 ![BMI Calculator](BMI_Calculator.jpg)
 
