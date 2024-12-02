@@ -65,7 +65,7 @@
     - Display exit message.
    
       
-#Pseudocode  
+# Pseudocode  
 
 start  
     print Description  
