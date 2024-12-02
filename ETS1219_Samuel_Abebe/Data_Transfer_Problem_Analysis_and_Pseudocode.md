@@ -31,7 +31,7 @@
    - Display the time to transfer the file in seconds.
    - Display the time to transfer the file in days.
    - Display the exit message.
-# Psuedocode
+# Pseudocode
 start  
     Declare file_size,character_per_second,bytes  
     print Description  
