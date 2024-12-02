@@ -63,11 +63,12 @@
     - Display the gross salary.
     - Display the net salary.
     - Display exit message.
+   
+      
 #Pseudocode
 start  
     print Description  
     print Separator  
-
     name_entry:  
     print Prompt to enter name:  
     read name  
@@ -102,13 +103,13 @@ else
     tax_deduction = gross_salary * 0.15  
     net_salary = gross_salary - tax_deduction  
 
-    print The amount you will pay for pension (5%) is:, base_salary, *, 0.05 =, base_salary * 0.05, Birr  
-    print By this, the Adjusted Base Salary will be:, base_salary, -, base_salary * 0.05, =, adjusted_base_salary, Birr  
-    print Your Bonus Income will be:, weekly_working_hour, *, bonus_rate_per_hour, =, bonus_payment, Birr  
-    print The amount to be cut for tax is:, gross_salary, *, 0.15 =, tax_deduction, Birr  
-    print The Gross Salary will be:, adjusted_base_salary, +, bonus_payment, =, gross_salary, Birr  
-    print Finally, name, 's Net Salary will be:, gross_salary, -, tax_deduction, =, net_salary, Birr  
-    print Exiting... Thank you  
+   print The amount you will pay for pension (5%) is:, base_salary, *, 0.05 =, base_salary * 0.05, Birr  
+   print By this, the Adjusted Base Salary will be:, base_salary, -, base_salary * 0.05, =, adjusted_base_salary, Birr  
+   print Your Bonus Income will be:, weekly_working_hour, *, bonus_rate_per_hour, =, bonus_payment, Birr  
+   print The amount to be cut for tax is:, gross_salary, *, 0.15 =, tax_deduction, Birr  
+   print The Gross Salary will be:, adjusted_base_salary, +, bonus_payment, =, gross_salary, Birr  
+   print Finally, name, 's Net Salary will be:, gross_salary, -, tax_deduction, =, net_salary, Birr  
+   print Exiting... Thank you  
 
 end  
 # Flowchart
