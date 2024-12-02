@@ -1,25 +1,34 @@
+
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main() {
-    // Constants
-    const int TRANSMISSION_RATE = 960; // Characters per second
-    const long FILE_SIZE = 419430400; // File size in bytes (400MB)
+    double file_byte_size, transmission_time, total_seconds, total_minutes, total_hours, total_days;
+    double transmission_rate_per_second = 960.0 / 256.0; // Convert characters per second to bytes per second
 
-    // Calculate the transmission time
-    long timeInSeconds = FILE_SIZE / TRANSMISSION_RATE;
+    cout << "Enter the transmission file size in bytes: ";
+    cin >> file_byte_size;
 
-    // Convert time to days, hours, minutes, and seconds
-    int days = timeInSeconds / (24 * 3600);
-    timeInSeconds %= (24 * 3600);
-    int hours = timeInSeconds / 3600;
-    timeInSeconds %= 3600;
-    int minutes = timeInSeconds / 60;
-    int seconds = timeInSeconds % 60;
+    if (cin.fail()) {
+        cout << "Invalid input" << endl;
+        return 1;
+    }
 
-    // Output the result
-    cout << "Time to send the file: " << days << " days, " << hours << " hours, "
-         << minutes << " minutes, and " << seconds << " seconds." << endl;
+    // Calculate the time for transmission
+    total_seconds = file_byte_size / transmission_rate_per_second;
+    total_minutes = total_seconds / 60;
+    total_hours = total_minutes / 60;
+    total_days = total_hours / 24;
+
+    cout << "At a rate of " << transmission_rate_per_second 
+         << " bytes per second, a file of " << file_byte_size 
+         << " bytes will be transmitted in:" << endl;
+    cout << total_seconds << " seconds," << endl;
+    cout << total_minutes << " minutes," << endl;
+    cout << total_hours << " hours, and " << endl;
+    cout << round(total_days) << " days." << endl;
 
     return 0;
 }
+
