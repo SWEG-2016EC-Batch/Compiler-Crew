@@ -1,3 +1,179 @@
+### Pseudocode
+1. Start
+
+2. Declare variables: weight, height, BMI, age, n
+
+3. Print program introduction and instructions
+
+4. Print formula for calculating BMI
+
+5. Prompt user for the number of people (n) to calculate BMI for
+
+6. Get input for n
+
+7. If input for n is invalid (non-numeric or less than or equal to 0):
+
+	Clear input
+
+	Display error message
+
+	Go back to step 5
+
+8. Loop from 1 to n:
+
+	Prompt user for the person's weight in kilograms
+
+	Get input for weight
+
+	If input for weight is invalid (non-numeric or less than or equal to 0):
+
+	Clear input
+
+	Display error message
+
+	Go back to weight input
+
+
+	Prompt user for the person's height in meters
+
+	Get input for height
+
+	If input for height is invalid (non-numeric or less than or equal to 0):
+
+	Clear input
+
+	Display error message
+
+	Go back to height input
+
+
+
+	Calculate BMI using the formula: BMI = weight / (height * height)
+	
+	Prompt user for the person's age in years
+
+	Get input for age
+
+	If input for age is invalid (non-numeric or less than 2):
+
+	Clear input
+
+	Display error message
+	
+	Go back to age input
+
+
+
+	Print the person's BMI
+
+	If age is between 2 and 12:
+
+	If BMI is less than 14, print "underweight"
+
+	Else if BMI is between 14 and 18, print "normal weight"
+
+	Else, print "overweight"
+
+
+
+	Else:
+
+	If BMI is less than 18.5, print "underweight"
+
+	Else if BMI is between 18.5 and 24.9, print "normal weight"
+
+	Else, print "overweight"
+
+	Print separator for each person's result
+
+9. End1. Start
+
+2. Declare variables: weight, height, BMI, age, n
+
+3. Print program introduction and instructions
+
+4. Print formula for calculating BMI
+
+5. Prompt user for the number of people (n) to calculate BMI for
+
+6. Get input for n
+
+7. If input for n is invalid (non-numeric or less than or equal to 0):
+
+	Clear input
+
+	Display error message
+
+	Go back to step 5
+
+8. Loop from 1 to n:
+
+	Prompt user for the person's weight in kilograms
+
+	Get input for weight
+
+	If input for weight is invalid (non-numeric or less than or equal to 0):
+
+	Clear input
+
+	Display error message
+
+	Go back to weight input
+
+
+	Prompt user for the person's height in meters
+
+	Get input for height
+
+	If input for height is invalid (non-numeric or less than or equal to 0):
+
+	Clear input
+
+	Display error message
+
+	Go back to height input
+
+
+
+	Calculate BMI using the formula: BMI = weight / (height * height)
+	
+	Prompt user for the person's age in years
+
+	Get input for age
+
+	If input for age is invalid (non-numeric or less than 2):
+
+	Clear input
+
+	Display error message
+	
+	Go back to age input
+
+
+
+	Print the person's BMI
+
+	If age is between 2 and 12:
+
+	If BMI is less than 14, print "underweight"
+
+	Else if BMI is between 14 and 18, print "normal weight"
+
+	Else, print "overweight"
+
+
+
+	Else:
+
+	If BMI is less than 18.5, print "underweight"
+
+	Else if BMI is between 18.5 and 24.9, print "normal weight"
+
+	Else, print "overweight"
+
+	Print separator for each person's result
+
+9. End
 ### Input
 - weight (float): The person's weight in kilograms.
 - height (float): The person's height in meters.
