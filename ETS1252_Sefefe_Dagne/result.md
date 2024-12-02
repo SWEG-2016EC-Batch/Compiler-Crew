@@ -29,4 +29,14 @@ Outputs:
 
 flowchart
 
-![flowchart_pow_function_shapes](https://github.com/user-attachments/assets/9276e2c2-52e8-4c5b-829a-8e35e2d13691)
+```mermaid
+flowchart TD
+    A((Start)) --> B[Declare variables: x, y, final_result]
+    B --> C[/Prompt user for base x/]
+    C --> D[/Input base x/]
+    D --> E[/Prompt user for exponent y/]
+    E --> F[/Input exponent y/]
+    F --> G[Calculate result: final_result = x^y]
+    G --> H[/Display final result/]
+    H --> I[/Display thank you message/]
+    I --> J((End))
