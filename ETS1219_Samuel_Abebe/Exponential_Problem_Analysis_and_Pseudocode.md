@@ -30,41 +30,41 @@
 5. **Output Results:**
    - Display the result of the exponential expression.
    - Display the exit message.
-### Pseudocode
-start
-    declare float variables: base, exponent
-    print Description 
-    print Separator 
+# Pseudocode
+start  
+    declare float variables: base, exponent  
+    print Description   
+    print Separator   
 
-    base_entry:
-    print "Enter the base: "
-    read base
-    if input is invalid:
-        clear input
-        print "Invalid Input! Try Again"
-        goto base_entry
-else
-    store original value of base in a new variable: original_base
+    base_entry:  
+    print "Enter the base: "  
+    read base  
+    if input is invalid:  
+        clear input  
+        print "Invalid Input! Try Again"  
+        goto base_entry  
+else  
+    store original value of base in a new variable: original_base  
 
-    exponent_entry:
-    print "Enter the exponent: "
-    read exponent
-    if input is invalid:
-        clear input
-        print "Invalid Input! Try Again"
-        goto exponent_entry
-else  if exponent is 0:
-        print "The result of original_base^0 is: 1"
-        print exit message
-        exit
-else
-    for i from 1 to exponent--:
-        base = base * original_base
+    exponent_entry:  
+    print "Enter the exponent: "  
+    read exponent  
+    if input is invalid:  
+        clear input  
+        print "Invalid Input! Try Again"  
+        goto exponent_entry  
+else  if exponent is 0:  
+        print "The result of original_base^0 is: 1"  
+        print exit message  
+        exit  
+else  
+    for i from 1 to exponent--:  
+        base = base * original_base  
 
-    print "The result of original_base^exponent is: base"
+    print "The result of original_base^exponent is: base"  
 
-    print exit message
-end
+    print exit message  
+end  
 
-### Flowchart
+# Flowchart
 ![BMI Calculator](Exponential.jpg)
