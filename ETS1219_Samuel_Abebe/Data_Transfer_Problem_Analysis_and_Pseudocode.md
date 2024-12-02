@@ -36,25 +36,24 @@ start
     Declare file_size,character_per_second,bytes  
     print Description  
     print Separator  
+    
+ file_size_entry:  
+   print Enter file size in MB (Mega Bytes):  
+   read file_size  
+   if input invalid or file_size <= 0 then  
+       
+   print Invalid Input! Try Again.  
+       goto file_size_entry 
 
-    file_size_entry:  
-    print Enter file size in MB (Mega Bytes):  
-    read file_size  
-    if input invalid or file_size <= 0 then  
-        
-        print Invalid Input! Try Again.  
-        goto file_size_entry 
-
-    calculate file_size * 1024 * 1024  
-
+   calculate file_size * 1024 * 1024  
     character_per_second = 960  
     calculate = bytes / character_per_second 
     calculate = (bytes / character_per_second) / 86400  
 
-    print MB to Bytes Conversion  
-    print Amount of time it will take in seconds  
-    print Amount of time it will take in days  
-    print Exit message  
+   print MB to Bytes Conversion  
+   print Amount of time it will take in seconds  
+   print Amount of time it will take in days  
+   print Exit message  
 
 end  
 # Flowchart
