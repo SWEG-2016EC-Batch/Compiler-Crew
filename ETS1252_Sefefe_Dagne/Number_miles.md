@@ -28,4 +28,16 @@ Outputs:
 
     ### flowchart
 
- ###   ![automobile_flowchart](https://github.com/user-attachments/assets/8d51029a-7d9a-42a6-8889-1e1c1fc94157)
+ ```mermaid
+flowchart TD
+    A((Start)) --> B[Declare variables: tank_Capacity, miles_PerGallon, total_Miles]
+    B --> C[/Prompt user for tank capacity in gallons/]
+    C --> D[/Input tank capacity/]
+    D --> E[/Prompt user for miles per gallon/]
+    E --> F[/Input miles per gallon/]
+    F --> G[Calculate total miles: total_Miles = tank_Capacity * miles_PerGallon]
+    G --> H[/Display total miles/]
+    H --> I((End))
+
+
+
