@@ -87,6 +87,8 @@
 	Print separator for each person's result
 
 9. End
+
+### **Problem Analysis*
 ### Input
 - weight (float): The person's weight in kilograms.
 - height (float): The person's height in meters.
