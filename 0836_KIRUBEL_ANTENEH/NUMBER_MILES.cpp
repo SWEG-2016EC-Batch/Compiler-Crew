@@ -1,25 +1,33 @@
-/* Write a program that prompts the capacity in gallon of an automobile fuel tank and the miles per gallons the automobile can 
-be driven . The program outputs the number miles the automobile can be driven without refueling.*/
-
 #include <iostream>
 using namespace std;
 
-int main() {
-    double tank_Capacity, miles_PerGallon, total_Miles;
+int main(){
+    float gallons, miles, miles_per_gallon;
 
-    // Input the tank capacity of your automobile
-    cout << "Enter the fuel tank capacity in gallons that your automobile can hold: "<<endl;
-    cin >> tank_Capacity;
+    line7:
+    cout << "Enter amount of fuel in the fuel tank (in gallons): ";
+    cin >> gallons;
 
-    // Input miles per gallon that your automobile can move
-    cout << "Enter the miles per gallon that your automobile can travel: ";
-    cin >> miles_PerGallon;
+    if (cin.fail() || gallons <= 0){
+        cout << "Invalid input, please try again\n";
+        cin.clear();
+        cin.ignore();
+        goto line7;
+    }
+    line17:
+    cout << "Enter the miles per gallon the automobile can be driven: ";
+    cin >> miles_per_gallon;
 
-    // Calculate the total miles that your automobile can move
-    total_Miles = tank_Capacity * miles_PerGallon;
+    if (cin.fail() || miles_per_gallon <= 0){
+        cout << "Invalid input, please try again\n";
+        cin.clear();
+        cin.ignore();
+        goto line17;
+    }
+  // calculate the miles
+    miles = gallons * miles_per_gallon;
 
-    
-    cout << "You can drive your automobile for about  " << total_Miles << " miles without refueling." << endl;
+    cout << "The automobile can be driven " << miles << " miles without refueling!";
 
     return 0;
 }
