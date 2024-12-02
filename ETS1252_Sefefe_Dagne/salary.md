@@ -41,4 +41,20 @@ Outputs:
 
      ###  flowchart
 
-      ![salary_calculation_flowchart](https://github.com/user-attachments/assets/a1eeea33-e85f-4257-8f97-aedca925e2f3)
+ ```mermaid
+flowchart TD
+    A((Start)) --> B[/Enter employee name/]
+    B --> C[/Input weekly working hours/]
+    C --> D[/Input bonus rate per hour/]
+    D --> E[/Input base salary/]
+    E --> F[Calculate bonus: bonus = weekly_workingHours * bonusRatePerHour]
+    F --> G[Calculate gross salary: gross_Salary = baseSalary + bonus]
+    G --> H[Calculate pension: pension = baseSalary * pension_rate]
+    H --> I[Calculate tax: tax = gross_Salary * taxrate]
+    I --> J[Calculate net salary: netSalary = gross_Salary - pension -tax]
+    J --> K[/Display bonus/]
+    K --> L[/Display gross salary/]
+    L --> M[/Display net salary/]
+    M--> N((End))
+
+    
