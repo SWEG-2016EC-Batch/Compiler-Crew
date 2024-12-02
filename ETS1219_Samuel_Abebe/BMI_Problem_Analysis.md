@@ -88,7 +88,7 @@
 
 9. End
 
-### **Problem Analysis*
+### Problem Analysis
 ### Input
 - weight (float): The person's weight in kilograms.
 - height (float): The person's height in meters.
