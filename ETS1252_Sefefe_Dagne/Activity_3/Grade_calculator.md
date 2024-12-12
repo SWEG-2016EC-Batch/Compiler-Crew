@@ -64,3 +64,43 @@ Else, set letter_grade to "F"
 Print the total mark with two decimal places
 
 Print the letter grade
+
+  ### flowchart
+  ```mermaid
+graph TD
+    A([Start]) --> B[/Enter the mark of test/]
+    B --> C[/Enter the mark of quizzes/]
+    C --> D[/Enter the mark of assignments/]
+    D --> E[/Enter the mark of project/]
+    E --> F[/Enter the mark of final exam/]
+    F --> G{Are any marks invalid?}
+    G -- Yes --> H[/Invalid input/]
+    G -- No --> I{Do the total marks equal 100?}
+    I -- No --> J[/The sum of all marks should be 100/]
+    I -- Yes --> K[Calculate total mark]
+    K --> L{Total mark >= 90?}
+    L -- Yes --> M[/letter_grade = "A+"/]
+    L -- No --> N{Total mark >= 80?}
+    N -- Yes --> O[/letter_grade = "A"/]
+    N -- No --> P{Total mark >= 75?}
+    P -- Yes --> Q[/letter_grade = "B+"/]
+    P -- No --> R{Total mark >= 60?}
+    R -- Yes --> S[/letter_grade = "B"/]
+    R -- No --> T{Total mark >= 55?}
+    T -- Yes --> U[/letter_grade = "C+"/]
+    T -- No --> V{Total mark >= 45?}
+    V -- Yes --> W[/letter_grade = "C"/]
+    V -- No --> X{Total mark >= 30?}
+    X -- Yes --> Y[/letter_grade = "D"/]
+    X -- No --> Z[/letter_grade = "F"/]
+    M --> AA[Display total mark and letter grade]
+    O --> AA[Display total mark and letter grade]
+    Q --> AA[Display total mark and letter grade]
+    S --> AA[Display total mark and letter grade]
+    U --> AA[Display total mark and letter grade]
+    W --> AA[Display total mark and letter grade]
+    Y --> AA[Display total mark and letter grade]
+    Z --> AA[/Display total mark and letter grade/]
+    AA --> AB([End])
+    H --> AB([End])
+    J --> AB([End])
