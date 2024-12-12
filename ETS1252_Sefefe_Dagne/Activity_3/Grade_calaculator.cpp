@@ -22,11 +22,7 @@ int main() {
     if (test < 0 || test > 15 || quizzes < 0 || quizzes > 5 || assignments < 0 || assignments > 10 || project < 0 || project > 20 || final_exam < 0 || final_exam > 50) {
         cout << "Invalid input" << endl;
         return 0;
-    } else if (test + quizzes + assignments + project + final_exam != 100) {
-        cout << "The sum of all marks should be 100" << endl;
-        return 0;
     }
-
     total_mark = test  + quizzes + assignments + project  + final_exam ;
 
     if (total_mark >= 90) {
