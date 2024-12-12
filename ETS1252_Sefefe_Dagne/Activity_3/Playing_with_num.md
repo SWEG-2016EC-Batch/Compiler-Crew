@@ -172,3 +172,49 @@ Break loop
 Print invalid choice message
 
 ### 5.End
+
+  ### flowchart
+  ```mermaid
+graph TD
+    A([Start]) --> B[/Select a task/]
+    B --> C{Choice}
+    C -- 1 --> D[/Enter an integer/]
+    D --> E[Reverse the number]
+    E --> F[/Display reversed number/]
+    F --> B
+    C -- 2 --> G[/Enter an integer/]
+    G --> H[Count the digits]
+    H --> I[/Display digit count/]
+    I --> B
+    C -- 3 --> J[/Enter an integer/]
+    J --> K[Find the product of even digits]
+    K --> L[/Display product of even digits/]
+    L --> B
+    C -- 4 --> M[/Enter an integer/]
+    M --> N[Find first and last digit and their sum]
+    N --> O[/Display first and last digit and their sum/]
+    O --> B
+    C -- 5 --> P[/Enter an integer/]
+    P --> Q[Swap first and last digit]
+    Q --> R[/Display swapped number/]
+    R --> B
+    C -- 6 --> S[/Enter an integer/]
+    S --> T[Check if the number is a palindrome]
+    T --> U[/Display palindrome result/]
+    U --> B
+    C -- 7 --> V[/Enter an integer/]
+    V --> W[Find the frequency of each digit]
+    W --> X[/Display digit frequency/]
+    X --> B
+    C -- 8 --> Y[/Enter an integer/]
+    Y --> Z[Check if the number is strong]
+    Z --> AA[/Display strong number result/]
+    AA --> B
+    C -- 9 --> BB[/Enter an integer/]
+    BB --> CC[Check if the number is perfect]
+    CC --> DD[/Display perfect number result/]
+    DD --> B
+    C -- 10 --> EE[/Exit/]
+    EE --> FF([End])
+    C -- Invalid choice --> GG[/Display invalid choice message/]
+    GG --> B
