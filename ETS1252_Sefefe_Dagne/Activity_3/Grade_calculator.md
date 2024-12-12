@@ -74,3 +74,40 @@ Print the total mark formatted to 2 decimal places
 Print the letter grade
 
 ### 8.End
+
+  ### flowchart
+  ```mermaid
+graph TD
+    A([Start]) --> B[/Enter the mark of test/]
+    B --> C[/Enter the mark of quizzes/]
+    C --> D[/Enter the mark of assignments/]
+    D --> E[/Enter the mark of project/]
+    E --> F[/Enter the mark of final exam/]
+    F --> G{Are any marks invalid?}
+    G -- Yes --> H[/Invalid input/]
+    G -- No --> I[Calculate total mark]
+    I --> J{Total mark >= 90?}
+    J -- Yes --> K[letter_grade = A+]
+    J -- No --> L{Total mark >= 80?}
+    L -- Yes --> M[letter_grade = A]
+    L -- No --> N{Total mark >= 75?}
+    N -- Yes --> O[letter_grade = B+]
+    N -- No --> P{Total mark >= 60?}
+    P -- Yes --> Q[letter_grade = B]
+    P -- No --> R{Total mark >= 55?}
+    R -- Yes --> S[letter_grade = C+]
+    R -- No --> T{Total mark >= 45?}
+    T -- Yes --> U[letter_grade = C]
+    T -- No --> V{Total mark >= 30?}
+    V -- Yes --> W[letter_grade = D]
+    V -- No --> X[letter_grade = F]
+    K --> Y[/Display total mark and letter grade/]
+    M --> Y[/Display total mark and letter grade/]
+    O --> Y[/Display total mark and letter grade/]
+    Q --> Y[/Display total mark and letter grade/]
+    S --> Y[/Display total mark and letter grade/]
+    U --> Y[/Display total mark and letter grade/]
+    W --> Y[/Display total mark and letter grade/]
+    X --> Y[/Display total mark and letter grade/]
+    Y --> Z([End])
+    H --> Z([End])
