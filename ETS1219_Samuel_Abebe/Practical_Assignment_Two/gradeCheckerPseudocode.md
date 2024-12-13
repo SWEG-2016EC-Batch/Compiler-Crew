@@ -4,7 +4,7 @@
 start
 
 declare test, quiz, project, assignment, finalExam, totalMark as double
-declare grade as char
+declare grade as string
 
 display "enter the mark for the test (out of 100): "
 a:
@@ -44,23 +44,24 @@ if finalExam < 0 or finalExam > 100 then
 totalMark = (test * 0.15) + (quiz * 0.05) + (project * 0.20) + (assignment * 0.10) + (finalExam * 0.50)
 
 if totalMark >= 90 then
-    grade = 'A+'
+    grade = "A+"
 elseif totalMark >= 80 then
-    grade = 'A'
+    grade = "A"
 elseif totalMark >= 75 then
-    grade = 'B+'
+    grade = "B+"
 elseif totalMark >= 60 then
-    grade = 'B'
+    grade = "B"
 elseif totalMark >= 55 then
-    grade = 'C+'
+    grade = "C+"
 elseif totalMark >= 45 then
-    grade = 'C'
+    grade = "C"
 elseif totalMark >= 30 then
-    grade = 'D'
+    grade = "D"
 else
-    grade = 'F'
+    grade = "F"
 
 display "total mark: ", totalMark
 display "grade: ", grade
 
 end
+
