@@ -1,4 +1,4 @@
-  ### flowchart(pseudocode)
+  ### Algorithm(pseudocode)
   ### start
 ### 1.Initialize Dimensions:
 
