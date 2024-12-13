@@ -1,6 +1,6 @@
 ### Algorithm(pseudocode)
 
-BEGIN
+### BEGIN
 
     PROMPT "Enter basic salary: "
     READ basic_salary
@@ -40,7 +40,7 @@ BEGIN
     PRINT "The employee will get a Net Salary of: ", net_salary
 END
 
-   ###flowchart
+   ###  flowchart
    ```mermaid
 graph TD
     A([Start]) --> B[/Enter basic salary/]
