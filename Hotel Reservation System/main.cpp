@@ -50,10 +50,19 @@ switch(choice){
         goto b;
    }
    if (choice==1 ){
- if(i>60){
-    cout<<"please reserve other type of room ocean view rooms are all reserved "<<endl;
+bool availableRoomFound = false;
+for (int k = 0; k < 60; k++) {  // Check all Ocean View rooms (1-60)
+    if (guest_reservation[k] == 0) {  // Room is available
+        availableRoomFound = true;
+        break;  // Exit loop when an available room is found
+    }
+}
+
+if (!availableRoomFound) {
+    cout << "Ocean View rooms are all reserved. Please choose another room type." << endl;
     goto b;
- }
+}
+
    cout << "Enter guest name: "<<endl;
    cin.ignore();
   cin.getline(guest_information[i][j], 20);
@@ -180,4 +189,3 @@ break;
 }
 return 0;
 }
-
