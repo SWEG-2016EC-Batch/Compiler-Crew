@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-
+#include<limits>
 
 using namespace std;
 
@@ -69,10 +69,26 @@ if (!availableRoomFound) {
     cout << "Enter gender: "<<endl;
     cin.getline(guest_information[i][j+1], 20);
     
-    cout << "Enter age: "<<endl;
-     cin>>guest_informaion2[i][j];
-cout << "Enter reservation code: "<<endl;
-    cin>>guest_informaion2[i][j+1];
+  do {
+    cout << "Enter age (must be a positive number): ";
+    cin >> guest_informaion2[i][j];
+    if (cin.fail() || guest_informaion2[i][j] <= 0) {
+        cout << "Invalid input. Please enter a valid positive age.\n";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+} while (guest_informaion2[i][j] <= 0);
+
+do {
+    cout << "Enter reservation code (must be a positive number): ";
+    cin >> guest_informaion2[i][j + 1];
+    if (cin.fail() || guest_informaion2[i][j + 1] <= 0) {
+        cout << "Invalid input. Please enter a valid positive reservation code.\n";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+} while (guest_informaion2[i][j + 1] <= 0);
+
 
     guest_reservation[i]=1;
     cout<<"your room is reserved"<<endl;
