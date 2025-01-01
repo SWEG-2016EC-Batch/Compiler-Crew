@@ -107,6 +107,8 @@ cout <<"your rooom number is :"<<room_number<< " (" << room_category << ")" << e
     cout<<"please reserve other type of room poolside villa rooms are all reserved "<<endl;
     goto b;
  }
+           string room_category = "Poolside Villa";
+
    cout << "Enter guest name: ";
     
      cin.ignore();
@@ -122,8 +124,7 @@ cout << "Enter reservation code: "<<endl;
     cout<<"your room is reserved"<<endl;
     room_number=u+1;
 
-cout <<"your rooom number is :"<<u+1<<endl;
-u++;
+ cout << "Your room number is: " << (u + 1) << " (" << room_category << ")" << endl;u++;
 
    }
 
