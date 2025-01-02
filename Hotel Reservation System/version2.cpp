@@ -1,186 +1,163 @@
 #include <iostream>
 #include <cstring>
-#include <vector>
-#include <unordered_map>
-#include <cstdlib>
-#include <ctime>
-
 using namespace std;
 
-struct Guest {
-    string name;
-    string gender;
-    int age;
-    string reservationCode;
-    int roomNumber;
-    string roomType;
-};
-
-vector<Guest> guests;
-unordered_map<string, Guest> guestMap;
-unordered_map<int, bool> roomStatus;
-int totalRooms = 150;
-
-// Room types and bounds as arrays
-string roomTypes[] = {"Ocean View Suite", "Poolside Villa", "Garden View Room"};
-int roomTypeBounds[] = {60, 110, 150};
-
-// Function to get valid integer input within a range
-int getValidIntInput() {
-    int input;
-    cin >> input;
-    cin.ignore();
-    return input;
-}
+const int total_number_room = 150;
 
 int main() {
-    srand(time(0)); // Seed for random number generation
+    int *guest_reservation = new int[total_number_room](); // Array used to store reservation, initialized to 0
+    char **guest_name = new char*[total_number_room]; // Array of pointers to store guest names
+    char **guest_gender = new char*[total_number_room]; // Array of pointers to store guest genders
+    int *guest_age = new int[total_number_room]; // Array to store guest ages
+    int *reservation_code = new int[total_number_room]; // Array to store reservation codes
 
-    int roomsToPreBook = totalRooms * 0.5; // 50% of rooms
-
-    // Pre-booking 50% of the rooms with random scattering
-    for (int i = 0; i < roomsToPreBook; ++i) {
-        int roomNumber;
-        do {
-            roomNumber = rand() % totalRooms + 1;
-        } while (roomStatus[roomNumber]); // Ensure unique room selection
-
-        string roomType;
-        if (roomNumber <= roomTypeBounds[0]) roomType = roomTypes[0];
-        else if (roomNumber <= roomTypeBounds[1]) roomType = roomTypes[1];
-        else roomType = roomTypes[2];
-
-        Guest guest = {"Guest" + to_string(i+1), "Gender" + to_string(i % 2 + 1), 30 + (i % 10), "Code" + to_string(i+1), roomNumber, roomType};
-        guests.push_back(guest);
-        guestMap[guest.reservationCode] = guest;
-        roomStatus[roomNumber] = true; // Mark room as reserved
+    for (int i = 0; i < total_number_room; ++i) {
+        guest_name[i] = new char[20];
+        guest_gender[i] = new char[20];
     }
 
-    int choice;
+    int choice, room_number = 1;
+    int i = 0, u = 60, m = 110;
+    bool found = false;
+
     while (true) {
         cout << "******************************" << endl;
         cout << "WELCOME TO THE COMPILER CREW\nHOTEL ROOM RESERVATION PORTAL" << endl;
         cout << "******************************" << endl;
-        cout << "1. Reserve a Room" << endl;
-        cout << "2. View Room Status" << endl;
-        cout << "3. Search Guest by Name" << endl;
-        cout << "4. Search Reservation by Code" << endl;
-        cout << "5. Exit" << endl;
+
+        cout << "Which service do you want?" << endl;
+        cout << "1. Reserve a Room\n";
+        cout << "2. View Room Status\n";
+        cout << "3. Search Guest by Name\n";
+        cout << "4. Search Guest by Reservation Code\n";
+        cout << "5. Exit\n";
         cout << "Enter your choice: ";
-        choice = getValidIntInput();
+        cin >> choice;
 
-        if (choice == 1) {
-            int roomChoice;
-            cout << "\nSelect Room Type:" << endl;
-            cout << "1. Ocean View Suite (Rooms 1-60)" << endl;
-            cout << "2. Poolside Villa (Rooms 61-110)" << endl;
-            cout << "3. Garden View Room (Rooms 111-150)" << endl;
-            cout << "Enter your choice: ";
-            roomChoice = getValidIntInput();
+        if (cin.fail() || choice < 1 || choice > 5) {
+            cout << "Please enter a number between 1 and 5" << endl;
+            cin.clear();
+            cin.ignore();
+            continue;
+        }
 
-            int start, end;
-            string roomType;
-            if (roomChoice == 1) {
-                start = 1;
-                end = 60;
-                roomType = "Ocean View Suite";
-            } else if (roomChoice == 2) {
-                start = 61;
-                end = 110;
-                roomType = "Poolside Villa";
-            } else if (roomChoice == 3) {
-                start = 111;
-                end = 150;
-                roomType = "Garden View Room";
-            }
+        if (choice == 5) {
+            cout << "Exiting... Thank You!\n";
+            break;
+        }
 
-            bool roomAssigned = false;
-            for (int roomNumber = start; roomNumber <= end; ++roomNumber) {
-                if (!roomStatus[roomNumber]) {
-                    Guest* newGuest = new Guest;
-                    cout << "Enter guest name: ";
-                    getline(cin, newGuest->name);
+        switch (choice) {
+            case 1:
+                int room_type;
+                cout << "\nSelect Room Type:\n";
+                cout << "1. Ocean View Suite (Rooms 1-60)\n";
+                cout << "2. Poolside Villa (Rooms 61-110)\n";
+                cout << "3. Garden View Room (Rooms 111-150)\n";
+                cout << "Enter your choice: ";
+                cin >> room_type;
 
-                    cout << "Enter gender: ";
-                    getline(cin, newGuest->gender);
-
-                    cout << "Enter age: ";
-                    newGuest->age = getValidIntInput();
-
-                    cout << "Enter reservation code: ";
-                    getline(cin, newGuest->reservationCode);
-
-                    newGuest->roomNumber = roomNumber;
-                    newGuest->roomType = roomType;
-
-                    guests.push_back(*newGuest);
-                    guestMap[newGuest->reservationCode] = *newGuest;
-                    roomStatus[roomNumber] = true; // Mark room as reserved
-
-                    cout << "Your room is reserved. Your room number is: " << roomNumber << endl;
-                    roomAssigned = true;
-                    break;
-                }
-            }
-
-            if (!roomAssigned) {
-                cout << "All rooms of this type are fully booked. Would you like to book another room type? (yes/no): ";
-                string response;
-                getline(cin, response);
-                if (response == "yes") {
+                if (room_type < 1 || room_type > 3) {
+                    cout << "Invalid choice. Please try again.\n";
                     continue;
-                } else {
-                    cout << "No room available." << endl;
                 }
-            }
-        } else if (choice == 2) {
-            cout << "\nRoom Status:" << endl;
-            for (int roomNumber = 1; roomNumber <= totalRooms; ++roomNumber) {
-                if (roomStatus[roomNumber]) {
-                    cout << "Room Number " << roomNumber << ": Reserved" << endl;
-                } else {
-                    cout << "Room Number " << roomNumber << ": Available" << endl;
-                }
-            }
-        } else if (choice == 3) {
-            string name;
-            cout << "\nEnter guest name: ";
-            getline(cin, name);
 
-            bool found = false;
-            for (const auto& guest : guests) {
-                if (guest.name == name) {
-                    cout << "\nGuest Found:\n";
-                    cout << "Room Number: " << guest.roomNumber << "\n";
-                    cout << "Name: " << guest.name << "\n";
-                    cout << "Gender: " << guest.gender << "\n";
-                    cout << "Age: " << guest.age << "\n";
-                    cout << "Reservation Code: " << guest.reservationCode << "\n";
-                    found = true;
-                    break;
+                if ((room_type == 1 && i >= 60) ||
+                    (room_type == 2 && u >= 110) ||
+                    (room_type == 3 && m >= total_number_room)) {
+                    cout << "Selected room type is fully booked. Please choose a different type.\n";
+                    continue;
                 }
-            }
-            if (!found) {
-                cout << "No guest found with the name: " << name << "\n";
-            }
-        } else if (choice == 4) {
-            string reservationCode;
-            cout << "\nEnter reservation code to search: ";
-            getline(cin, reservationCode);
-            if (guestMap.find(reservationCode) != guestMap.end()) {
-                const Guest* guest = &guestMap.at(reservationCode);
-                cout << "Reservation found:\n";
-                cout << "Name: " << guest->name << "\n";
-                cout << "Gender: " << guest->gender << "\n";
-                cout << "Age: " << guest->age << "\n";
-                cout << "Room Number: " << guest->roomNumber << "\n";
-                cout << "Room Type: " << guest->roomType << "\n";
-            } else {
-                cout << "No reservation found with that code." << endl;
-            }
-        } else if (choice == 5) {
-            cout << "Exiting the portal. Have a great day!\n";
-            return 0;
+
+                cout << "Enter guest name: ";
+                cin.ignore();
+                cin.getline(room_type == 1 ? guest_name[i] : room_type == 2 ? guest_name[u] : guest_name[m], 20);
+
+                cout << "Enter gender: ";
+                cin.getline(room_type == 1 ? guest_gender[i] : room_type == 2 ? guest_gender[u] : guest_gender[m], 20);
+
+                cout << "Enter age: ";
+                cin >> (room_type == 1 ? guest_age[i] : room_type == 2 ? guest_age[u] : guest_age[m]);
+
+                cout << "Enter reservation code: ";
+                cin >> (room_type == 1 ? reservation_code[i] : room_type == 2 ? reservation_code[u] : reservation_code[m]);
+
+                guest_reservation[room_type == 1 ? i : room_type == 2 ? u : m] = 1;
+                cout << "Your room is reserved.\n";
+                room_number = room_type == 1 ? ++i : room_type == 2 ? ++u : ++m;
+                cout << "Your room number is: " << room_number << endl;
+                break;
+
+            case 2:
+                room_number = 1;
+                for (int k = 0; k < total_number_room; ++k) {
+                    cout << "Room number " << room_number++ << " is " << (guest_reservation[k] ? "reserved" : "available") << endl;
+                }
+                break;
+
+            case 3:
+                char name[20];
+                cout << "Enter guest name: ";
+                cin.ignore();
+                cin.getline(name, 20);
+
+                for (int k = 0; k < total_number_room; ++k) {
+                    if (strcmp(guest_name[k], name) == 0) {
+                        cout << "\nGuest Found:\n";
+                        cout << "Room Number: " << k + 1 << "\n";
+                        cout << "Name: " << guest_name[k] << "\n";
+                        cout << "Gender: " << guest_gender[k] << "\n";
+                        cout << "Age: " << guest_age[k] << "\n";
+                        cout << "Reservation Code: " << reservation_code[k] << "\n";
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    cout << "No guest found with the name: " << name << "\n";
+                }
+                found = false;
+                break;
+
+            case 4:
+                int res_code;
+                cout << "Please Enter the reservation code: ";
+                cin >> res_code;
+
+                for (int k = 0; k < total_number_room; ++k) {
+                    if (res_code == reservation_code[k]) {
+                        cout << "\nGuest Found:\n";
+                        cout << "Room Number: " << k + 1 << "\n";
+                        cout << "Name: " << guest_name[k] << "\n";
+                        cout << "Gender: " << guest_gender[k] << "\n";
+                        cout << "Age: " << guest_age[k] << "\n";
+                        cout << "Reservation Code: " << reservation_code[k] << "\n";
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    cout << "No such reservation code found\n";
+                }
+                found = false;
+                break;
+
+            default:
+                break;
         }
     }
+
+    // Free dynamically allocated memory
+    for (int k = 0; k < total_number_room; ++k) {
+        delete[] guest_name[k];
+        delete[] guest_gender[k];
+    }
+    delete[] guest_reservation;
+    delete[] guest_name;
+    delete[] guest_gender;
+    delete[] guest_age;
+    delete[] reservation_code;
+
+    return 0;
 }
