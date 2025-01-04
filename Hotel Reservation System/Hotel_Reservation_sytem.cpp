@@ -30,9 +30,9 @@ int main() {
     // Main loop for hotel reservation system
     while (true) {
         // Display welcome message
-        cout << "******" << endl;
+        cout << "******************************" << endl;
         cout << "WELCOME TO THE COMPILER CREW\nHOTEL ROOM RESERVATION PORTAL" << endl;
-        cout << "******" << endl;
+        cout << "******************************" << endl;
 
         // Menu for user options
         cout << "Which service do you want?" << endl;
@@ -44,7 +44,7 @@ int main() {
         cin >> choice; // Get user choice
 
         // Validate user input
-        if (cin.fail()  choice < 1  choice > 4) {
+        if (cin.fail() || choice < 1 || choice > 4) {
             cout << "Please enter a number between 1 and 4" << endl;
             cin.clear(); // Clear input error
             cin.ignore(); // Ignore bad input
@@ -56,6 +56,7 @@ int main() {
             cout << "Exiting... Thank You!\n";
             break; // Exit the loop
         }
+
 switch (choice) {
     case 1: { // Reserve a Room
         int room_type; // Variable to store selected room type
