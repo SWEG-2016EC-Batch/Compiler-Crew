@@ -147,23 +147,30 @@ switch (choice) {
         break;
     }
 }
-     case 2: { // View Room Status                room_number = 1; // Reset room number
-                // Display room status header                cout << "Ocean View Suites (Rooms 1-60)         | Poolside Villas (Rooms 61-110)       | Garden View Rooms (Rooms 111-150)" << endl;
+    case 2: { // View Room Status
+                room_number = 1; // Reset room number
+                // Display room status header
+                cout << "Ocean View Suites (Rooms 1-60)         | Poolside Villas (Rooms 61-110)       | Garden View Rooms (Rooms 111-150)" << endl;
                 cout << "----------------------------------------------------------------------------------------------------" << endl;
-                // Loop through and display room status                for (int k = 0; k < 60; ++k) {
-                    cout << left << setw(30) << ("Room number " + to_string(k + 1) + (guest_reservation[k] ? " is reserved" : " is available"));                    cout << "\t\t"; // Print tab for formatting
+
+                // Loop through and display room status
+                for (int k = 0; k < 60; ++k) {
+                    cout << left << setw(30) << ("Room number " + to_string(k + 1) + (guest_reservation[k] ? " is reserved" : " is available"));
+                    cout << "\t\t"; // Print tab for formatting
+
                     // Check Poolside Villas
-                    if (k + 60 < total_number_room) {                        cout << left << setw(30) << ("Room number " + to_string(k + 61) + (guest_reservation[k + 60] ? " is reserved" : " is available"));
-                        cout << "\t\t"; // Print tab for formatting                    }
+                    if (k + 60 < total_number_room) {
+                        cout << left << setw(30) << ("Room number " + to_string(k + 61) + (guest_reservation[k + 60] ? " is reserved" : " is available"));
+                        cout << "\t\t"; // Print tab for formatting
+                    }
+
                     // Check Garden View Rooms
-                    if (k + 110 < total_number_room) {                        cout << left << setw(30) << ("Room number " + to_string(k + 111) + (guest_reservation[k + 110] ? " is reserved" : " is available"));
-                        cout << "\t\t"; // Print tab for formatting                    }
-                    cout << endl; // New line after each row                }
-                cout << "\n\n\n"; // Three new lines before next option                break; // Exit this case
+                    if (k + 110 < total_number_room) {
+                        cout << left << setw(30) << ("Room number " + to_string(k + 111) + (guest_reservation[k + 110] ? " is reserved" : " is available"));
+                        cout << "\t\t"; // Print tab for formatting
+                    }
+                    cout << endl; // New line after each row
+                }
+                cout << "\n\n\n"; // Three new lines before next option
+                break; // Exit this case
             }
-            case 3: { // Get Help With Booking                cout << "Get Help With Booking:\n";
-                cout << "1. Search Guest\n"; // Search Guest option                cout << "2. Cancel Reservation\n"; // Cancel Reservation option
-                cout << "3. About Our Services\n"; // About Our Services option                cout << "4. Contact Us\n"; // Contact Us option
-                cout << "Enter your choice: ";                int help_choice;
-                cin >> help_choice;
-         
