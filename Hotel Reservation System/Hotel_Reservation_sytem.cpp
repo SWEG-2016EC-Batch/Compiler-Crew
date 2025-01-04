@@ -267,3 +267,19 @@ switch (choice) {
             }
             default:                break; // Default case (should not reach here)
         }    }
+  // Free dynamically allocated memory to avoid memory leaks
+    for (int k = 0; k < total_number_room; ++k) {
+        delete[] guest_name[k]; // Free memory for guest names
+        delete[] guest_gender[k]; // Free memory for guest genders
+        delete[] guest_id[k]; // Free memory for guest IDs
+    }
+    delete[] guest_reservation; // Free memory for reservation status
+    delete[] guest_name; // Free memory for guest names array
+    delete[] guest_gender; // Free memory for guest genders array
+    delete[] guest_age; // Free memory for guest ages array
+    delete[] reservation_code; // Free memory for reservation codes array
+    delete[] guest_id; // Free memory for guest IDs array
+
+    return 0; // Indicate successful execution
+}
+
