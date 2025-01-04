@@ -233,3 +233,37 @@ switch (choice) {
                                         break; // Exit the loop
                                     }
                                 }
+// If no reservation found                               
+                    if (!found) {
+                                    cout << "No such reservation code found\n\n"; // Space before next option                                }
+                                found = false; // Reset found flag                                break; // Exit this case
+                            }
+                            default:                                cout << "Invalid choice. Returning to main menu.\n\n"; // Space before next option
+                                break;                        }
+                        break; // Exit this case                    }
+                    case 2: { // Cancel Reservation
+                        int res_code; // Variable for reservation code input                        cout << "Please enter your reservation code to cancel: ";
+                        cin >> res_code; // Get reservation code
+                        // Search for reservation code                        for (int k = 0; k < total_number_room; ++k) {
+                            if (res_code == reservation_code[k]) { // Compare reservation codes                                guest_reservation[k] = 0; // Cancel the reservation
+                                cout << "Reservation cancelled for room number: " << k + 1 << "\n\n";                                found = true; // Set found flag
+                                break; // Exit the loop                            }
+                        }
+                        // If no reservation found                        if (!found) {
+                            cout << "No such reservation code found. Unable to cancel.\n\n";                        }
+                        found = false; // Reset found flag                        break; // Exit this case
+                    }
+                    case 3: { // About Our Services                        cout << "\nAbout Our Services:\n";
+                        cout << "We offer a variety of accommodations to suit your needs:\n";                        cout << "1. Ocean View Suite: Enjoy breathtaking views of the ocean with luxurious amenities.\n";
+                        cout << "2. Poolside Villa: Relax by the pool in our spacious and elegant villas.\n";                        cout << "3. Garden View Room: Experience tranquility in our cozy garden view rooms.\n";
+                        cout << "All rooms come with top-notch service and facilities to ensure a memorable stay.\n\n";                        break; // Exit this case
+                    }
+                    case 4: { // Contact Us                        cout << "Contact Us:\n";
+                        cout << "Phone Number: +1234567890\n"; // Example phone number                        cout << "Social Media: @HotelSocialMedia\n\n"; // Example social media handle
+                        break; // Exit this case                    }
+                    default:
+                        cout << "Invalid choice. Returning to main menu.\n\n"; // Space before next option                        break;
+                }                break; // Exit this case
+            }
+            default:                break; // Default case (should not reach here)
+        }    }
