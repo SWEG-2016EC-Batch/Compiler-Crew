@@ -55,13 +55,11 @@ This class defines the functionalities and processes that the system performs.
   - Handle invalid inputs gracefully, providing feedback and prompting for re-entry.
 
 
-## Flowchart
-```mermaid
 flowchart TD
     A([Start]) --> B[Main Menu]
     B --> C[Reserve a Room]
     B --> D[View Room Status]
-    B --> E[Get Help With Booking]
+    B --> E[Help With Booking]
     B --> F[Exit Program]
 
     C --> G[Choose Room Type]
@@ -73,31 +71,38 @@ flowchart TD
     I --> K
     J --> K
 
-    K --> L[Input Validation]
-    L --> M[Reserve Room]
-    L --> N[Invalid Input]
+    K --> L{Is Input Valid?}
+    L -->|Yes| M[Reserve Room]
+    L -->|No| K
 
     M --> B
 
-    D --> O[Show Room Availability]
-    O --> B
+    D --> N[Show Room Availability]
+    N --> B
 
-    E --> P[Help Options]
-    P --> Q[Search Guest]
-    P --> R[Edit Guest Data]
-    P --> S[Cancel Reservation]
-    P --> T[About Our Services]
-    P --> U[Contact Us]
+    E --> O[Help Options]
+    O --> P[Search Guest]
+    O --> Q[Edit Guest Data]
+    O --> R[Cancel Reservation]
+    O --> S[About Services]
+    O --> T[Contact Us]
 
-    Q --> V[Search Options]
-    V --> W[By Name]
-    V --> X[By Reservation Code]
-
+    P --> U{Guest Found?}
+    U -->|Yes| V[Display Guest Info]
+    U -->|No| W[Guest Not Found]
+    V --> B
     W --> B
-    X --> B
-    R --> B
-    S --> B
-    T --> B
-    U --> B
 
-    F --> Z([End])
+    Q --> X[Edit Guest Data]
+    X --> B
+
+    R --> Y[Cancel Reservation]
+    Y --> B
+
+    S --> Z[About Services Info]
+    Z --> B
+
+    T --> AA[Contact Information]
+    AA --> B
+
+    F --> AB([End])
