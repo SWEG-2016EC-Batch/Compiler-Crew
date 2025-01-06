@@ -161,4 +161,98 @@ int main() {
             cout << "\n\n\n";
             break; // Break out of the case
         }
+  case 2: {
+            cout << "Ocean View Suites (Rooms 1-60)         | Poolside Villas (Rooms 61-110)       | Garden View Rooms (Rooms 111-150)" << endl;
+            cout << "----------------------------------------------------------------------------------------------------" << endl;
+            for (int k = 0; k < 60; ++k) {
+                cout << left << setw(30) << ("Room number " + to_string(k + 1) + (guest_reservation[k] ? " is reserved" : " is available"));
+                cout << "\t\t";
+                if (k + 60 < total_number_room) {
+                    cout << left << setw(30) << ("Room number " + to_string(k + 61) + (guest_reservation[k + 60] ? " is reserved" : " is available"));
+                    cout << "\t\t";
+                }
+                if (k + 110 < total_number_room) {
+                    cout << left << setw(30) << ("Room number " + to_string(k + 111) + (guest_reservation[k + 110] ? " is reserved" : " is available"));
+                    cout << "\t\t";
+                }
+                cout << endl; // New line for the next room status
+            }
+            cout << "\n\n\n";
+            break; // Break out of the case
+        }
+
+        case 3: { // Get help with booking
+            cout << "Get Help With Booking:\n";
+            cout << "1. Search Guest\n";
+            cout << "2. Edit Guest Data\n";
+            cout << "3. Cancel Reservation\n";
+            cout << "4. About Our Services\n";
+            cout << "5. Contact Us\n";
+            cout << "Enter your choice: ";
+            int help_choice;
+            cin >> help_choice;
+
+            switch (help_choice) {
+            case 1: { // Search guest
+                cout << "Search Options:\n";
+                cout << "1. Search by Name\n";
+                cout << "2. Search by Reservation Code\n";
+                cout << "Enter your choice: ";
+                int search_choice;
+                cin >> search_choice;
+
+                switch (search_choice) {
+                case 1: { // Search by guest name
+                    char name[20];
+                    cout << "Enter guest name: ";
+                    cin.ignore();
+                    cin.getline(name, 20);
+                    for (int k = 0; k < total_number_room; ++k) {
+                        if (strcmp(guest_name[k], name) == 0) {
+                            cout << "\nGuest Found:\n";
+                            cout << "Room Number: " << k + 1 << "\n";
+                            cout << "Name: " << guest_name[k] << "\n";
+                            cout << "Gender: " << guest_gender[k] << "\n";
+                            cout << "Age: " << guest_age[k] << "\n";
+                            cout << "ID/Passport Number: " << guest_id[k] << "\n";
+                            cout << "Reservation Code: " << reservation_code[k] << "\n\n";
+                            found = true; // Set found flag
+                            break; // Exit loop once found
+                        }
+                    }
+                    if (!found) {
+                        cout << "No guest found with the name: " << name << "\n\n";
+                    }
+                    found = false; // Reset found flag
+                    break; // Break out of the case
+                }
+                case 2: { // Search by reservation code
+                    int res_code;
+                    cout << "Please Enter the reservation code: ";
+                    cin >> res_code;
+                    for (int k = 0; k < total_number_room; ++k) {
+                        if (res_code == reservation_code[k]) {
+                            cout << "\nGuest Found:\n";
+                            cout << "Room Number: " << k + 1 << "\n";
+                            cout << "Name: " << guest_name[k] << "\n";
+                            cout << "Gender: " << guest_gender[k] << "\n";
+                            cout << "Age: " << guest_age[k] << "\n";
+                            cout << "ID/Passport Number: " << guest_id[k] << "\n";
+                            cout << "Reservation Code: " << reservation_code[k] << "\n\n";
+                            found = true; // Set found flag
+                            break; // Exit loop once found
+                        }
+                    }
+                    if (!found) {
+                        cout << "No such reservation code found\n\n";
+                    }
+                    found = false; // Reset found flag
+                    break; // Break out of the case
+                }
+                default:
+                    cout << "Invalid choice. Returning to main menu.\n\n";
+                    break; // Invalid input handling
+                }
+                break; // Break out of the case
+            }
 
