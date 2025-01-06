@@ -254,5 +254,176 @@ int main() {
                     break; // Invalid input handling
                 }
                 break; // Break out of the case
+            }          
+            case 2: { // Edit guest data
+                int res_code;
+                cout << "Please Enter the reservation code: ";
+                cin >> res_code;
+                for (int k = 0; k < total_number_room; ++k) {
+                    if (res_code == reservation_code[k]) {
+                        guest_reservation[k] = 0; // Mark the room as available
+                        strcpy(guest_name[k], ""); // Clear name
+                        strcpy(guest_gender[k], ""); // Clear gender
+                        guest_age[k] = 0; // Clear age
+                        strcpy(guest_id[k], ""); // Clear ID
+                        reservation_code[k] = 0; // Clear reservation code
+
+                        int room_type;
+                        cout << "\nSelect New Room Type:\n";
+                        cout << "1. Ocean View Suite (Rooms 1-60)\n";
+                        cout << "2. Poolside Villa (Rooms 61-110)\n";
+                        cout << "3. Garden View Room (Rooms 111-150)\n";
+                        cout << "Enter your choice: ";
+                        cin >> room_type;
+
+                        if (cin.fail() || room_type < 1 || room_type > 3) {
+                            cout << "Invalid choice. Please try again.\n\n";
+                            continue; // Restart the loop for valid input
+                        }
+
+                        int new_room_number = -1; // Initialize new room number
+                        if (room_type == 1 && i < 60) { // Ocean View Suite
+                            new_room_number = i++;
+                        } else if (room_type == 2 && u < 110) { // Poolside Villa
+                            new_room_number = u++;
+                        } else if (room_type == 3 && m < total_number_room) { // Garden View Room
+                            new_room_number = m++;
+                        } else {
+                            cout << "Selected room type is fully booked. Please choose a different type.\n\n";
+                            continue; // Restart the loop for a different selection
+                        }
+
+                        char * current_name = guest_name[new_room_number];
+                        char * current_gender = guest_gender[new_room_number];
+                        int * current_age = & guest_age[new_room_number];
+                        char * current_id = guest_id[new_room_number];
+                        int * current_reservation_code = & reservation_code[new_room_number];
+
+                        bool validName = false;
+                        while (!validName) {
+                            cout << "Enter guest name: ";
+                            cin.ignore(); // Clear input buffer
+                            cin.getline(current_name, 20); // Get the guest's name
+                            validName = true; // Assume valid name unless proven otherwise
+                            for (int i = 0; i < strlen(current_name); ++i) {
+                                if (!isalpha(current_name[i]) && current_name[i] != ' ') {
+                                    validName = false;
+                                    break; // Invalid name, exit loop
+                                }
+                            }
+                            if (!validName) {
+                                cout << "Invalid input. Please enter a valid name (letters and spaces only).\n";
+                            }
+                        }
+
+                        bool validGender = false;
+                        while (!validGender) {
+                            cout << "Enter gender (M/F): ";
+                            cin.getline(current_gender, 20);
+                            if (strlen(current_gender) == 1 &&
+                                (current_gender[0] == 'M' || current_gender[0] == 'm' ||
+                                    current_gender[0] == 'F' || current_gender[0] == 'f')) {
+                                validGender = true; // Gender input is valid
+                            } else {
+                                cout << "Invalid input. Please enter 'M' or 'F' only.\n";
+                            }
+                        }
+
+                        bool validAge = false;
+                        while (!validAge) {
+                            cout << "Enter age: ";
+                            cin >> * current_age; // Get the guest's age
+                            if (cin.fail() || * current_age < 18) {
+                                cout << "Invalid input. Please enter a valid age (numbers only and at least 18).\n";
+                                cin.clear();
+                                cin.ignore();
+                            } else {
+                                validAge = true; // Age input is valid
+                            }
+                        }
+
+                        cout << "Enter ID or Passport Number: ";
+                        cin.ignore(); // Clear input buffer
+                        cin.getline(current_id, 20);
+                        cout << "Enter reservation code: ";
+                        cin >> * current_reservation_code;
+
+                        guest_reservation[new_room_number] = 1; // Mark the room as reserved again
+                        cout << "Your information has been modified.\n";
+                        cout << "Your new room number is: " << (new_room_number + 1) << endl; // Display the new room number
+                        found = true; // Set found flag
+                        break; // Exit the loop
+                    }
+                }
+                if (!found) {
+                    cout << "No such reservation code found\n\n"; // Error message for invalid reservation code
+                }
+                found = false; // Reset found flag
+                break; // Break out of the case
             }
+            case 3: { // Cancel Reservation
+                int res_code;
+                cout << "Please enter your reservation code to cancel: ";
+                cin >> res_code;
+                for (int k = 0; k < total_number_room; ++k) {
+                    if (res_code == reservation_code[k]) {
+                        guest_reservation[k] = 0; // Mark the room as available
+                        strcpy(guest_name[k], ""); // Clear name
+                        strcpy(guest_gender[k], ""); // Clear gender
+                        guest_age[k] = 0; // Clear age
+                        strcpy(guest_id[k], ""); // Clear ID
+                        reservation_code[k] = 0; // Clear reservation code
+                        cout << "Reservation cancelled for room number: " << k + 1 << "\n\n";
+                        found = true; // Set found flag
+                        break; // Exit the loop
+                    }
+                }
+                if (!found) {
+                    cout << "No such reservation code found. Unable to cancel.\n\n"; // If no reservation found
+                }
+                found = false; // Reset found flag
+                break; // Exit this case
+            }
+            case 4: { // About Our Services
+                cout << "\nAbout Our Services:\n";
+                cout << "We offer a variety of accommodations to suit your needs:\n";
+                cout << "1. Ocean View Suite: Enjoy breathtaking views of the ocean with luxurious amenities.\n";
+                cout << "2. Poolside Villa: Relax by the pool in our spacious and elegant villas.\n";
+                cout << "3. Garden View Room: Experience tranquility in our cozy garden view rooms.\n";
+                cout << "All rooms come with top-notch service and facilities to ensure a memorable stay.\n\n";
+                break; // Break out of the case
+            }
+            case 5: { // Contact Us
+                cout << "Contact Us:\n";
+                cout << "Phone Number: +1234567890\n";
+                cout << "Social Media: @HotelSocialMedia\n\n";
+                break; // Break out of the case
+            }
+            default:
+                cout << "Invalid choice. Returning to main menu.\n\n";
+                break; // Invalid input handling
+            }
+            break; // Break out of the case
+        }
+        default:
+            break; // Default case handling
+        }
+    }
+
+    // Clean up dynamically allocated memory
+    for (int k = 0; k < total_number_room; ++k) {
+        delete[] guest_name[k];
+        delete[] guest_gender[k];
+        delete[] guest_id[k];
+    }
+    delete[] guest_reservation;
+    delete[] guest_name;
+    delete[] guest_gender;
+    delete[] guest_age;
+    delete[] reservation_code;
+    delete[] guest_id;
+
+    return 0;
+}
+
 
