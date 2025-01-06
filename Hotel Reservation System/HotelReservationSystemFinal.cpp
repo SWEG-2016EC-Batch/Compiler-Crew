@@ -111,3 +111,54 @@ int main() {
                     cout << "Invalid input. Please enter a valid name (letters and spaces only).\n";
                 }
             }
+
+            // Gender and age input validation, Reservation code input and room assignment
+            bool validGender = false;
+            while (!validGender) {
+                cout << "Enter gender (M/F): ";
+                cin.getline(current_gender, 20);
+                if (strlen(current_gender) == 1 &&
+                    (current_gender[0] == 'M' || current_gender[0] == 'm' ||
+                        current_gender[0] == 'F' || current_gender[0] == 'f')) {
+                    validGender = true; // Gender input is valid
+                } else {
+                    cout << "Invalid input. Please enter 'M' or 'F' only.\n";
+                }
+            }
+
+            bool validAge = false;
+            while (!validAge) {
+                cout << "Enter age: ";
+                cin >> * current_age; // Get the guest's age
+                if (cin.fail() || * current_age < 18) {
+                    cout << "Invalid input. Please enter a valid age (numbers only and at least 18).\n";
+                    cin.clear();
+                    cin.ignore();
+                } else {
+                    validAge = true; // Age input is valid
+                }
+            }
+
+            cout << "Enter ID or Passport Number: ";
+            cin.ignore(); // Clear input buffer
+            cin.getline(current_id, 20);
+            cout << "Enter reservation code: ";
+            cin >> * current_reservation_code;
+
+            if (room_type == 1) {
+                guest_reservation[i] = 1;
+                room_number = ++i; // Update next available room number
+            } else if (room_type == 2) {
+                guest_reservation[u] = 1;
+                room_number = ++u;
+            } else {
+                guest_reservation[m] = 1;
+                room_number = ++m;
+            }
+
+            cout << "Your room is reserved.\n";
+            cout << "Your room number is: " << room_number << endl;
+            cout << "\n\n\n";
+            break; // Break out of the case
+        }
+
