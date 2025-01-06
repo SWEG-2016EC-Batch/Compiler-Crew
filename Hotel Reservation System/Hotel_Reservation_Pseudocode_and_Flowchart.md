@@ -58,47 +58,69 @@ This class defines the functionalities and processes that the system performs.
 ## Flowchart
 ```mermaid
 flowchart TD
-    A([Start]) --> B[Main Menu]
-    B --> C[Reserve a Room]
-    B --> D[View Room Status]
-    B --> E[Get Help With Booking]
-    B --> F[Exit Program]
-
-    C --> G[Choose Room Type]
-    G --> H[Ocean View Suite]
-    G --> I[Poolside Villa]
-    G --> J[Garden View Room]
-
-    H --> K[Enter Guest Info]
-    I --> K
-    J --> K
-
-    K --> L[Input Validation]
-    L --> M[Reserve Room]
-    L --> N[Invalid Input]
-
-    M --> B
-
-    D --> O[Show Room Availability]
-    O --> B
-
-    E --> P[Help Options]
-    P --> Q[Search Guest]
-    P --> R[Edit Guest Data]
-    P --> S[Cancel Reservation]
-    P --> T[About Our Services]
-    P --> U[Contact Us]
-
-    Q --> V[Search Options]
-    V --> W[By Name]
-    V --> X[By Reservation Code]
-
-    W --> B
-    X --> B
-    R --> B
-    S --> B
-    T --> B
-    U --> B
-
-    F --> Z([End])
+    start([Start]) --> displayMenu[/Display Main Menu/]
+    
+    displayMenu --> checkOption1{Option == 1?}
+    checkOption1 -->|Yes| reserveRoom[Reserve a Room]
+    checkOption1 -->|No| checkOption2{Option == 2?}
+    
+    checkOption2 -->|Yes| viewStatus[/View Room Status/]
+    checkOption2 -->|No| checkOption3{Option == 3?}
+    
+    checkOption3 -->|Yes| helpBooking[/Help With Booking/]
+    checkOption3 -->|No| checkOption4{Option == 0?}
+    
+    checkOption4 -->|Yes| finish([End])
+    checkOption4 -->|No| invalidOption[Invalid Option, Go Back to Menu]
+    
+    reserveRoom --> chooseRoomType[/Choose Room Type/]
+    chooseRoomType --> roomType1{Room Type == Ocean View Suite?}
+    roomType1 -->|Yes| guestInfo1[/Enter Guest Info/]
+    roomType1 -->|No| roomType2{Room Type == Poolside Villa?}
+    
+    roomType2 -->|Yes| guestInfo2[/Enter Guest Info/]
+    roomType2 -->|No| guestInfo3[/Enter Guest Info for Garden View Room/]
+    
+    guestInfo1 --> validateInfo1{Is Input Valid?}
+    guestInfo2 --> validateInfo1
+    guestInfo3 --> validateInfo1
+    
+    validateInfo1 -->|Yes| confirmReservation[/Room Reserved Successfully!/]
+    validateInfo1 -->|No| retryInfo[Retry Entering Info]
+    retryInfo --> chooseRoomType
+    
+    confirmReservation --> backToMenu1[Go Back to Menu]
+    backToMenu1 --> displayMenu
+    
+    viewStatus --> showAvailability[/Display Room Availability/]
+    showAvailability --> backToMenu2[Go Back to Menu]
+    backToMenu2 --> displayMenu
+    
+    helpBooking --> helpOptions[/Display Help Options/]
+    helpOptions --> option1{Help == Search Guest?}
+    option1 -->|Yes| searchGuest[/Search Guest/]
+    option1 -->|No| option2{Help == Edit Guest Data?}
+    
+    option2 -->|Yes| editGuest[/Edit Guest Data/]
+    option2 -->|No| option3{Help == Cancel Reservation?}
+    
+    option3 -->|Yes| cancelReservation[/Cancel Reservation/]
+    option3 -->|No| option4{Help == About Services?}
+    
+    option4 -->|Yes| aboutServices[/About Services/]
+    option4 -->|No| contactUs[/Contact Us/]
+    
+    searchGuest --> guestFound{Guest Found?}
+    guestFound -->|Yes| showGuestInfo[/Display Guest Info/] --> backToMenu3[Go Back to Menu]
+    guestFound -->|No| notFound[/Guest Not Found/] --> backToMenu3
+    
+    editGuest --> backToMenu4[Go Back to Menu]
+    cancelReservation --> backToMenu4
+    aboutServices --> backToMenu4
+    contactUs --> backToMenu4
+    
+    backToMenu3 --> displayMenu
+    backToMenu4 --> displayMenu
+    
+    invalidOption --> displayMenu
 
