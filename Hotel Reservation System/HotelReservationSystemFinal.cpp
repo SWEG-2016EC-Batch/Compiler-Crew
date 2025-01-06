@@ -61,3 +61,53 @@ int main() {
                 cin.ignore();
                 continue; // Restart the loop for valid input
             }
+
+  if ((room_type == 1 && i >= 60) ||
+                (room_type == 2 && u >= 110) ||
+                (room_type == 3 && m >= total_number_room)) {
+                cout << "Selected room type is fully booked. Please choose a different type.\n\n";
+                continue; // Restart the loop for a different selection
+            }
+
+            char * current_name = nullptr;
+            char * current_gender = nullptr;
+            int * current_age = nullptr;
+            char * current_id = nullptr;
+            int * current_reservation_code = nullptr;
+
+            if (room_type == 1) {
+                current_name = guest_name[i];
+                current_gender = guest_gender[i];
+                current_age = & guest_age[i];
+                current_id = guest_id[i];
+                current_reservation_code = & reservation_code[i];
+            } else if (room_type == 2) {
+                current_name = guest_name[u];
+                current_gender = guest_gender[u];
+                current_age = & guest_age[u];
+                current_id = guest_id[u];
+                current_reservation_code = & reservation_code[u];
+            } else {
+                current_name = guest_name[m];
+                current_gender = guest_gender[m];
+                current_age = & guest_age[m];
+                current_id = guest_id[m];
+                current_reservation_code = & reservation_code[m];
+            }
+
+            bool validName = false;
+            while (!validName) {
+                cout << "Enter guest name: ";
+                cin.ignore(); // Clear input buffer
+                cin.getline(current_name, 20); // Get the guest's name
+                validName = true; // Assume valid name unless proven otherwise
+                for (int i = 0; i < strlen(current_name); ++i) {
+                    if (!isalpha(current_name[i]) && current_name[i] != ' ') {
+                        validName = false;
+                        break; // Invalid name, exit loop
+                    }
+                }
+                if (!validName) {
+                    cout << "Invalid input. Please enter a valid name (letters and spaces only).\n";
+                }
+            }
